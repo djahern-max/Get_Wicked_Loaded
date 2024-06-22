@@ -1,0 +1,81 @@
+/* HaulFormContent.css */
+.form-container {
+  max-width: 300px;
+  margin: 20px auto; /* you can reduce the top and bottom margin if needed */
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  border: 1px solid #e1e1e1;
+}
+
+.form-container input,
+.form-container button {
+  width: calc(100% - 16px); /* Full width minus padding */
+  padding: 10px 8px;
+  margin-top: 15px;
+  border: 2px solid #dddddd; /* Lighter border for inputs */
+  border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions for interactions */
+}
+
+.form-container input:focus,
+.form-container button:focus {
+  outline: none;
+  border-color: #0056b3; /* Focus state with a more noticeable color */
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.25); /* Subtle glow effect */
+}
+
+.form-container button {
+  background-color: #4CAF50; /* A fresh green background */
+  color: #ffffff; /* White text for contrast */
+  font-weight: bold;
+  letter-spacing: 0.5px; /* Spacing out letters slightly */
+  cursor: pointer;
+  border: none; /* Remove border for buttons */
+}
+
+.form-container button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+}
+
+.form-container input {
+  background-color: #f8f8f8; /* Very light background for inputs */
+  color: #333; /* Dark color for text to ensure readability */
+}
+
+.Sev_Logo {
+  display: block; /* ensures it centers if needed */
+  width: 300px; /* increase logo size */
+  height: auto; /* maintain aspect ratio */
+  margin: 0 auto 2px; /* centers logo and reduces space below */
+}
+
+.form-container button {
+  background-color: #006400; /* dark green */
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+  background-color: #004d00; /* slightly darker green on hover */
+}
+
+@media (max-width: 480px) {
+  .form-container {
+      padding: 20px;
+      margin: 20px;
+  }
+
+  .form-container input,
+  .form-container button {
+      padding: 12px 10px;
+  }
+}
+
+
+

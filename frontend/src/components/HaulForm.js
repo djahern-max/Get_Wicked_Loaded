@@ -1,6 +1,8 @@
 // src/components/HaulForm.js
 import React, { useState } from 'react';
-import '../styles/HaulForm.css'; // Import the CSS file
+import '../styles/HaulFormContent.css'; // Import the CSS file
+
+import HaulFormContent from './HaulFormContent';
 import axios from 'axios';
 
 const HaulForm = ({ onSubmit }) => {
@@ -31,49 +33,13 @@ const HaulForm = ({ onSubmit }) => {
 };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="hauledFrom">Hauled From:</label>
-        <input
-          type="text"
-          id="hauledFrom"
-          name="hauledFrom"
-          value={formData.hauledFrom}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="hauledTo">Hauled To:</label>
-        <input
-          type="text"
-          id="hauledTo"
-          name="hauledTo"
-          value={formData.hauledTo}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="material">Material:</label>
-        <input
-          type="text"
-          id="material"
-          name="material"
-          value={formData.material}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="quantity">Quantity:</label>
-        <input
-          type="number"
-          id="quantity"
-          name="quantity"
-          value={formData.quantity}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    <div>
+    <HaulFormContent 
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+    />
+    </div>
   );
 };
 
