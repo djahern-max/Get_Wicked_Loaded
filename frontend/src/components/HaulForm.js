@@ -1,6 +1,7 @@
 // src/components/HaulForm.js
 import React, { useState } from 'react';
 import '../styles/HaulForm.css'; // Import the CSS file
+import axios from 'axios';
 
 const HaulForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -18,18 +19,16 @@ const HaulForm = ({ onSubmit }) => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('HaulForm data submitted:', formData);
-    onSubmit();
-    // Reset form
-    setFormData({
-      hauledFrom: '',
-      hauledTo: '',
-      material: '',
-      quantity: ''
-    });
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();  // Prevents the default form submission behavior
+    console.log('Form data:', formData);  // Check form data
+    try {
+        const response = await axios.post('http://localhost:3000/api/deliveries', formData);
+        console.log('Server response:', response);
+    } catch (error) {
+        console.error('Submission error:', error);
+    }
+};
 
   return (
     <form onSubmit={handleSubmit}>
