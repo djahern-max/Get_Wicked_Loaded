@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import HaulForm from './components/HaulForm';
 import SuperForm from './components/SuperForm';
 import './App.css'; // Import the CSS file
+import TestConnection from './components/TestConnection';
+
 
 function App() {
   const [showSuperForm, setShowSuperForm] = useState(false);
@@ -37,6 +39,11 @@ function App() {
           />
         </>
       )}
+
+          {/* <div>
+            <h1>Testing Backend Connection</h1>
+            <TestConnection />
+        </div> */}
     </div>
   );
 }

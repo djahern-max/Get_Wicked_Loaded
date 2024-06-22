@@ -2,20 +2,36 @@ require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql2');
 const dbConfig = require('./config/db.config');
-const port = 3000;
+const cors = require('cors');
+
 
 const app = express();
+const port = process.env.PORT || 3001;
 
-// Create a MySQL pool
+// Apply CORS middleware to accept requests from your frontend
+app.use(cors());
+
+// Example of a simple route
+app.get('/test-db', (req, res) => {
+    res.send('Database connection is active and reachable.');
+});
+
+// Using a connection pool instead of a single connection
 const pool = mysql.createPool(dbConfig);
 
-// Example of using the pool
-pool.query('SELECT 1 + 1 AS solution', (error, results, fields) => {
-  if (error) throw error;
-  console.log('The solution is: ', results[0].solution);
+// Simple route to check database connectivity
+app.get('/test-db', (req, res) => {
+    pool.query('SELECT 1 + 1 AS result', (error, results) => {
+        if (error) {
+            res.status(500).send('Database connection error: ' + error);
+            return;
+        }
+        res.send('Database connection successful: ' + results[0].result);
+    });
 });
 
-app.listen(5000, () => {
-  console.log('Server is running on port 5000');
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
 });
+
 
