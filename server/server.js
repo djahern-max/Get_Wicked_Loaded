@@ -1,46 +1,52 @@
 require('dotenv').config();
 const initializeDatabase = require('./utils/dbInitializer');
 const express = require('express');
-const mysql = require('mysql2');
+const mysql2 = require('mysql2');
 const dbConfig = require('./config/db.config');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const deliveriesRoutes = require('./routes/deliveriesRoutes');
-
-
-const app = express();
-const port = process.env.PORT || 3001;
 
 // Database initialization
 initializeDatabase();
 
-app.use(bodyParser.json());
-app.use('/routes', deliveriesRoutes);
+const app = express();
+const port = 3000;
 
-// Apply CORS middleware to accept requests from your frontend
+// Middleware
 app.use(cors());
+app.use(bodyParser.json());
 
-// Example of a simple route
-app.get('/test-db', (req, res) => {
-    res.send('Database connection is active and reachable.');
+// Database connection
+const db = mysql2.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '1234',
+    database: 'get_wicked_loaded'
 });
 
-// Using a connection pool instead of a single connection
-const pool = mysql.createPool(dbConfig);
+db.connect(err => {
+    if (err) {
+        return console.error('error connecting: ' + err.message);
+    }
+    console.log('Connected to the MySQL server.');
+});
 
-// Simple route to check database connectivity
-app.get('/test-db', (req, res) => {
-    pool.query('SELECT 1 + 1 AS result', (error, results) => {
+app.post('/api/deliveries', (req, res) => {
+    const { hauledFrom, hauledTo, material, quantity } = req.body;
+    const sql = `INSERT INTO deliveries (hauledFrom, hauledTo, material, quantity) VALUES (?, ?, ?, ?)`;
+
+    db.query(sql, [hauledFrom, hauledTo, material, quantity], (error, results) => {
         if (error) {
-            res.status(500).send('Database connection error: ' + error);
-            return;
+            console.error('Failed to insert data into database:', error);
+            res.status(500).send('Failed to insert data into database');
+        } else {
+            res.status(201).send({ message: 'Data inserted successfully', id: results.insertId });
         }
-        res.send('Database connection successful: ' + results[0].result);
     });
 });
+
+
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
-
-
