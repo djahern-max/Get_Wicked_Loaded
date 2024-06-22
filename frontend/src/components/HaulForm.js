@@ -79,5 +79,3 @@ const HaulForm = ({ onSubmit }) => {
 };
 
 export default HaulForm;
-
-

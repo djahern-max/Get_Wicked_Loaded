@@ -30,3 +30,4 @@ exports.getAllDeliveries = (req, res) => {
         }
     });
 };
+

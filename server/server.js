@@ -7,6 +7,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const deliveriesRoutes = require('./routes/deliveriesRoutes');
 
+
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -14,7 +15,7 @@ const port = process.env.PORT || 3001;
 initializeDatabase();
 
 app.use(bodyParser.json());
-app.use('/api', deliveriesRoutes);
+app.use('/routes', deliveriesRoutes);
 
 // Apply CORS middleware to accept requests from your frontend
 app.use(cors());

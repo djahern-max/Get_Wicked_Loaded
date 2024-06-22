@@ -9,3 +9,4 @@ router.post('/', deliveriesController.addDelivery);
 router.get('/', deliveriesController.getAllDeliveries);
 
 module.exports = router;
+
