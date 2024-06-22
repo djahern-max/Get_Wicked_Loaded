@@ -1,8 +1,13 @@
 // src/components/SuperForm.js
 import React from 'react';
 import '../styles/ReviewLoads.css'; // Import the CSS file
+import { useNavigate } from 'react-router-dom';
 
-const SuperForm = ({ onReviewDeliveries, onSubmitToManager }) => {
+
+
+const ReviewLoads = ({ onReviewDeliveries, onSubmitToManager }) => {
+
+
   return (
     <div className="super-form">
       <button onClick={onReviewDeliveries}>Review Deliveries</button>
@@ -11,5 +16,6 @@ const SuperForm = ({ onReviewDeliveries, onSubmitToManager }) => {
   );
 };
 
-export default SuperForm;
+
+export default ReviewLoads;
 
