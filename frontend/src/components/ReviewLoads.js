@@ -1,12 +1,12 @@
 // src/components/SuperForm.js
 import React from 'react';
-import '../styles/SuperForm.css'; // Import the CSS file
+import '../styles/ReviewLoads.css'; // Import the CSS file
 
-const SuperForm = ({ onReviewDeliveries, onSubmitToOffice }) => {
+const SuperForm = ({ onReviewDeliveries, onSubmitToManager }) => {
   return (
     <div className="super-form">
       <button onClick={onReviewDeliveries}>Review Deliveries</button>
-      <button onClick={onSubmitToOffice}>Submit to Office</button>
+      <button onClick={onSubmitToManager}>Submit to Manager</button>
     </div>
   );
 };

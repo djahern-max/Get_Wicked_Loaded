@@ -1,7 +1,7 @@
 // src/App.js
 import React, { useState } from 'react';
 import HaulForm from './components/HaulForm';
-import SuperForm from './components/SuperForm';
+import ReviewLoads from './components/ReviewLoads';
 import './App.css'; // Import the CSS file
 import TestConnection from './components/TestConnection';
 
@@ -32,8 +32,8 @@ function App() {
         </>
       ) : (
         <>
-          <h1>Super Form</h1>
-          <SuperForm
+          <h1>Review Loads</h1>
+          <ReviewLoads
             onReviewDeliveries={handleReviewDeliveries}
             onSubmitToOffice={handleSubmitToOffice}
           />
