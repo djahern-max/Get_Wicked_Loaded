@@ -1,12 +1,20 @@
 require('dotenv').config();
+const initializeDatabase = require('./utils/dbInitializer');
 const express = require('express');
 const mysql = require('mysql2');
 const dbConfig = require('./config/db.config');
 const cors = require('cors');
-
+const bodyParser = require('body-parser');
+const deliveriesRoutes = require('./routes/deliveriesRoutes');
 
 const app = express();
 const port = process.env.PORT || 3001;
+
+// Database initialization
+initializeDatabase();
+
+app.use(bodyParser.json());
+app.use('/api', deliveriesRoutes);
 
 // Apply CORS middleware to accept requests from your frontend
 app.use(cors());
