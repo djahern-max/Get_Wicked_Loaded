@@ -36,29 +36,38 @@ function HaulFormContent({ handleSubmit }) {
     }, []);
 
     return (
-        <div className="form-container haul-form select haul-form select:hover haul-form select:focus haul-form option">
+        <div className="form-container">
             <form onSubmit={handleSubmit}>
-            <select name="hauledFrom" id="job">
+            <div className="form-field">
+            <p className="form-label">Hauled From:</p>
+            <select className="form-select" name="hauledFrom" id="job">
                 {jobs.map((item, index) => (
                     <option key={index} value={item.JobNumber}>{item.JobName}</option>
                 ))}
             </select>
-            <select name="hauledTo" id="job">
+            <p className="form-label">Hauled To:</p>
+            <select className="form-select" name="hauledTo" id="job">
                 {jobs.map((item, index) => (
                     <option key={index} value={item.JobNumber}>{item.JobName}</option>
                 ))}
             </select>
-            <select name="material" id="material">
+            <p className="form-label">Material:</p>
+            <select className="form-select" name="material" id="material">
                 {materials.map((item, index) => (
                     <option key={index} value={item.ItemID}>{item.ItemID}</option>
                 ))}
             </select>
-            <select name="loadcount" id="loadcount">
+            <p className="form-label">Quantity:</p>
+            <select className="form-select" name="loadcount" id="loadcount">
                 {loadcounts.map((item, index) => (
                     <option key={index} value={item.yards}>{item.yards}</option>
                 ))}
             </select>  
-                <button type="submit">Submit Delivery</button>
+                <button type="submit" className="form-button">Submit Delivery</button>
+
+
+            </div>
+
             </form>
         </div>
     );

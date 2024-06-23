@@ -1,103 +1,99 @@
-/* HaulFormContent.css */
+/* Container surrounding the form */
 .form-container {
-  max-width: 300px;
-  margin: 20px auto; /* you can reduce the top and bottom margin if needed */
-  padding: 25px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-  border: 1px solid #e1e1e1;
+  max-width: 500px; /* Maximum width of the form */
+  margin: 0px auto; /* Centering the form in the middle of the page */
+  padding: 21px; /* Reduced padding */
+  background: rgb(219, 218, 218); /* Light grey background */
+  border-radius: 10px; /* Slightly larger rounded corners for a softer look */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* More pronounced shadow for depth */
+  border: 1px solid #eaeaea; /* Subtle border for refined edge */
 }
 
-.form-container input,
-.form-container button {
-  width: calc(100% - 16px); /* Full width minus padding */
-  padding: 10px 8px;
-  margin-top: 15px;
-  border: 2px solid #dddddd; /* Lighter border for inputs */
-  border-radius: 5px;
-  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions for interactions */
+/* Each form field (paragraph + select) */
+.form-field {
+  margin-bottom: 15px; /* Slightly reduced space between form fields */
 }
 
-.form-container input:focus,
-.form-container button:focus {
-  outline: none;
-  border-color: #0056b3; /* Focus state with a more noticeable color */
-  box-shadow: 0 0 5px rgba(0, 86, 179, 0.25); /* Subtle glow effect */
+/* Paragraph tags used as labels */
+.form-label {
+  font-size: 15px; /* Slightly larger font size for readability */
+  color: #2c3e50; /* A deep blue-grey for more contrast */
+  margin-bottom: 5px; /* Reduced space between label and select box */
+  font-weight: 900; /* Medium font weight for emphasis */
+  text-align: center;
+ 
+
 }
 
-.form-container button {
-  background-color: #4CAF50; /* A fresh green background */
-  color: #ffffff; /* White text for contrast */
-  font-weight: bold;
-  letter-spacing: 0.5px; /* Spacing out letters slightly */
-  cursor: pointer;
-  border: none; /* Remove border for buttons */
-}
-
-.form-container button:hover {
-  background-color: #45a049; /* Slightly darker green on hover */
-}
-
-.form-container input {
-  background-color: #f8f8f8; /* Very light background for inputs */
-  color: #333; /* Dark color for text to ensure readability */
-}
-
-.Sev_Logo {
-  display: block; /* ensures it centers if needed */
-  width: 300px; /* increase logo size */
-  height: auto; /* maintain aspect ratio */
-  margin: 0 auto 2px; /* centers logo and reduces space below */
-}
-
-.form-container button {
-  background-color: #006400; /* dark green */
-  color: white;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  border: none;
-  transition: background-color 0.3s;
-}
-
-.form-container button:hover {
-  background-color: #004d00; /* slightly darker green on hover */
-}
-
-/* Styles specifically for select element */
-.haul-form select {
-  height: 40px;
-  width: 100%; /* Makes the select box take the full container width */
-  padding: 0 10px;
-  font-size: 16px;
-  font-family: Arial, sans-serif; /* Ensures the font matches other inputs */
-  border: 1px solid #ccc; /* Subtle border */
-  border-radius: 4px; /* Rounded corners */
-  background-color: white;
-  color: #333;
-  appearance: none; /* Removes native OS styling */
-  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2212%22%20height%3D%2212%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpolygon%20fill%3D%22%23333%22%20points%3D%220,0%206,12%2012,0%22%2F%3E%3C/svg%3E'); /* Adds custom dropdown arrow */
+/* Style for the select elements */
+.form-select {
+  width: 100%; /* Full width of its container */
+  padding: 8px 10px; /* Reduced padding for a sleeker look */
+  border: 2px solid #eaeaea; /* Thicker border in a very light grey */
+  border-radius: 8px; /* Uniform rounded corners */
+  background-color: white; /* White background for the dropdown */
+  font-size: 16px; /* Keeping the font size consistent */
+  color: #34495e; /* Darker grey for text */
+  -webkit-appearance: none; /* Removing default styles for consistency */
+  -moz-appearance: none; /* Removing default styles for consistency */
+  appearance: none; /* Removing default styles for consistency */
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ecf0f1, #ecf0f1); /* Custom arrow with gradient */
+  background-position: calc(100% - 15px) center, calc(100% - 10px) center, 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5px 100%;
   background-repeat: no-repeat;
-  background-position: right 10px center; /* Positions the dropdown arrow */
-  background-size: 12px;
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for interactive elements */
 }
 
-/* Hover styles for select */
-.haul-form select:hover {
-  border-color: #888; /* Darker border on hover */
+/* Hover effects for select elements */
+.form-select:hover {
+  border-color: #bdc3c7; /* Lighter grey on hover */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth on hover */
 }
 
-/* Focus styles for select */
-.haul-form select:focus {
-  border-color: #0056b3; /* Blue border for focus */
-  outline: none; /* Removes default focus outline */
+/* Focus effects for select elements */
+.form-select:focus {
+  border-color: #3498db; /* Vibrant blue border for focus */
+  box-shadow: 0 2px 8px rgba(50, 150, 233, 0.2); /* Soft blue glow */
+  outline: none; /* Removing the default outline for aesthetics */
 }
 
-/* Style for options */
-.haul-form option {
-  padding: 8px 10px;
+/* Button Styling */
+.form-button {
+  padding: 12px 25px; /* Increased padding for a larger, more clickable area */
+  font-size: 16px; /* Clear and readable text size */
+  font-weight: bold; /* Bold text for emphasis */
+  color: white; /* White text for high contrast */
+  background-color: rgb(16, 70, 16); /* Dark green background */
+  border: none; /* No border for a cleaner look */
+  border-radius: 8px; /* Rounded corners for a modern aesthetic */
+  cursor: pointer; /* Indicates the element is clickable */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions for interactive effects */
+  outline: none; /* Removes outline to maintain style on focus */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
+  margin: 28px 0 10px; /* Increased top margin to create space above the button */
 }
+
+/* Hover State */
+.form-button:hover {
+  background-color: rgba(45, 53, 59, 0.2); /* A slightly darker shade of green on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* More pronounced shadow for a "lifted" effect */
+}
+
+/* Focus State */
+.form-button:focus {
+  box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3); /* Green shadow to match button color for focus */
+}
+
+/* Active State */
+.form-button:active {
+  background-color: rgb(61, 109, 75); /* Even darker green for an active (pressed) state */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Lower shadow to simulate the button being pressed */
+}
+
+
+
+
+
 
 @media (max-width: 480px) {
   .form-container {
