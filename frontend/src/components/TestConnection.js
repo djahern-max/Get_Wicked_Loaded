@@ -1,16 +1,27 @@
-// import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-// const TestConnection = () => {
-//     const [data, setData] = useState('');
+function TestConnection() {
+    const [backendResponse, setBackendResponse] = useState('');
 
-//     useEffect(() => {
-//         fetch('http://localhost:3001/test-db')
-//             .then(response => response.text())
-//             .then(data => setData(data))
-//             .catch(err => setData('Error connecting to backend: ' + err));
-//     }, []);
+    useEffect(() => {
+        // Make an API call to the backend
+        fetch('http://localhost:3000/api/test')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => setBackendResponse(data.message))
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
 
-//     return <div>{data}</div>;
-// }
+    return (
+        <div>
+            <h1>Backend Connection Test</h1>
+            <p>Response from backend: {backendResponse || 'No response received'}</p>
+        </div>
+    );
+}
 
-// export default TestConnection;
+export default TestConnection;

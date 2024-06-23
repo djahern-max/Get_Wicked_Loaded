@@ -26,7 +26,7 @@ const HaulForm = ({ onSubmit }) => {
     e.preventDefault();  // Prevents the default form submission behavior
     console.log('Form data:', formData);  // Check form data
     try {
-        const response = await axios.post('http://localhost:3001/api/delivey', formData);
+        const response = await axios.post('http://localhost:3000/api/delivey', formData);
         console.log('Server response:', response);
     } catch (error) {
         console.error('Submission error:', error);

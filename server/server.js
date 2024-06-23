@@ -14,8 +14,14 @@ const app = express();
 const port = 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors());  // Enable CORS for all domains
+
 app.use(bodyParser.json());
+
+// Define the test API endpoint
+app.get('/api/test', (req, res) => {
+    res.json({ message: "Connection successful!" });
+});
 
 // Database connection
 const db = mysql2.createConnection({
