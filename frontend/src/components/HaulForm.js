@@ -34,9 +34,6 @@ const HaulForm = ({ onSubmit }) => {
 };
 
 
-
-
-
   return (
     <div>
     <HaulFormContent 

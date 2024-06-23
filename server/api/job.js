@@ -2,11 +2,12 @@ const express = require('express');
 // const axios = require('axios');
 const router = express.Router();
 
-router.post('/api/material', (req, res) => {
-    const { ItemID, Description } = req.body;
-    const sql = `INSERT INTO material (ItemID, Description) VALUES (?, ?)`;
 
-    db.query(sql, [ItemID, Description], (error, results) => {
+router.post('/api/job', (req, res) => {
+    const { JobNumber, JobName } = req.body;
+    const sql = `INSERT INTO jobs (JobNumber, JobName) VALUES (?, ?)`;
+
+    db.query(sql, [JobNumber, JobName], (error, results) => {
         if (error) {
             console.error('Failed to insert data into database:', error);
             res.status(500).send('Failed to insert data into database');
@@ -17,8 +18,8 @@ router.post('/api/material', (req, res) => {
 });
 
 
-router.get('/api/material', (req, res) => {
-    const sql = 'SELECT * FROM material';  
+router.get('/api/job', (req, res) => {
+    const sql = 'SELECT * FROM jobs';  
     db.query(sql, (error, results) => {
         if (error) {
             console.error('Error fetching deliveries: ', error);

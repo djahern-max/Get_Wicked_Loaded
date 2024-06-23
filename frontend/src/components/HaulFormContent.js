@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/HaulFormContent.css'; // Import the CSS file
+import axios from 'axios';
 
 function HaulFormContent({ formData, handleChange, handleSubmit }) {
+
+    const [materials, setMaterials] = useState([]);
+    const [jobs, setJobs] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/material')
+            .then(response => {
+                setMaterials(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching materials:', error);
+            });
+
+            axios.get('http://localhost:3000/api/job')
+            .then(response => {
+                setJobs(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching materials:', error);
+            });
+    }, []);
+
     return (
         <div className="form-container">
             <form onSubmit={handleSubmit}>
@@ -12,20 +35,16 @@ function HaulFormContent({ formData, handleChange, handleSubmit }) {
                     onChange={handleChange}
                     placeholder="Hauled From"
                 />
-                <input
-                    type="text"
-                    name="hauledTo"
-                    value={formData.hauledTo}
-                    onChange={handleChange}
-                    placeholder="Hauled To"
-                />
-                <input
-                    type="text"
-                    name="material"
-                    value={formData.material}
-                    onChange={handleChange}
-                    placeholder="Material"
-                />
+            <select name="hauledTo" id="job">
+                {jobs.map((item, index) => (
+                    <option key={index} value={item.JobNumber}>{item.JobName}</option>
+                ))}
+            </select>
+            <select name="material" id="material">
+                {materials.map((item, index) => (
+                    <option key={index} value={item.ItemID}>{item.ItemID}</option>
+                ))}
+            </select>
                 <input
                     type="number"
                     name="quantity"

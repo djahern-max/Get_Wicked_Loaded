@@ -1,8 +1,9 @@
 const express = require('express');
-const axios = require('axios');
+// const axios = require('axios');
+const router = express.Router();
 
 
-app.post('/api/deliveries', (req, res) => {
+router.post('/api/delivery', (req, res) => {
     const { hauledFrom, hauledTo, material, quantity } = req.body;
     const sql = `INSERT INTO deliveries (hauledFrom, hauledTo, material, quantity) VALUES (?, ?, ?, ?)`;
 
@@ -16,7 +17,7 @@ app.post('/api/deliveries', (req, res) => {
     });
 });
 
-app.get('/api/deliveries', (req, res) => {
+router.get('/api/delivery', (req, res) => {
     const sql = 'SELECT * FROM deliveries';  
     db.query(sql, (error, results) => {
         if (error) {
