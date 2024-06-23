@@ -26,15 +26,13 @@ function HaulFormContent({ formData, handleChange, handleSubmit }) {
     }, []);
 
     return (
-        <div className="form-container">
+        <div className="form-container haul-form select haul-form select:hover haul-form select:focus haul-form option">
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="hauledFrom"
-                    value={formData.hauledFrom}
-                    onChange={handleChange}
-                    placeholder="Hauled From"
-                />
+            <select name="hauledFrom" id="job">
+                {jobs.map((item, index) => (
+                    <option key={index} value={item.JobNumber}>{item.JobName}</option>
+                ))}
+            </select>
             <select name="hauledTo" id="job">
                 {jobs.map((item, index) => (
                     <option key={index} value={item.JobNumber}>{item.JobName}</option>

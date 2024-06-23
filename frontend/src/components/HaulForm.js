@@ -1,5 +1,5 @@
 // src/components/HaulForm.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../styles/HaulFormContent.css'; // Import the CSS file
 import HaulFormContent from './HaulFormContent';
 import axios from 'axios';
@@ -26,7 +26,7 @@ const HaulForm = ({ onSubmit }) => {
     e.preventDefault();  // Prevents the default form submission behavior
     console.log('Form data:', formData);  // Check form data
     try {
-        const response = await axios.post('http://localhost:3000/api/deliveries', formData);
+        const response = await axios.post('http://localhost:3001/api/delivey', formData);
         console.log('Server response:', response);
     } catch (error) {
         console.error('Submission error:', error);
