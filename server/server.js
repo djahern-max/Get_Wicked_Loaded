@@ -56,8 +56,8 @@ app.get('/api/material', (req, res) => {
     const sql = 'SELECT * FROM material';  
     db.query(sql, (error, results) => {
         if (error) {
-            console.error('Error fetching deliveries: ', error);
-            res.status(500).send('Failed to fetch deliveries');
+            console.error('Error fetching materials: ', error);
+            res.status(500).send('Failed to fetch materials');
         } else {
             res.json(results);
         }
@@ -109,8 +109,20 @@ app.get('/api/job', (req, res) => {
     const sql = 'SELECT * FROM jobs';  
     db.query(sql, (error, results) => {
         if (error) {
-            console.error('Error fetching deliveries: ', error);
-            res.status(500).send('Failed to fetch deliveries');
+            console.error('Error fetching jobs: ', error);
+            res.status(500).send('Failed to fetch jobs');
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+app.get('/api/loadcount', (req, res) => {
+    const sql = 'SELECT * FROM loadcount';  
+    db.query(sql, (error, results) => {
+        if (error) {
+            console.error('Error fetching loadcounts: ', error);
+            res.status(500).send('Failed to fetch loadcounts');
         } else {
             res.json(results);
         }

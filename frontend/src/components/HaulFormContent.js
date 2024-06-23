@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import '../styles/HaulFormContent.css'; // Import the CSS file
 import axios from 'axios';
 
-function HaulFormContent({ formData, handleChange, handleSubmit }) {
+function HaulFormContent({ handleSubmit }) {
 
     const [materials, setMaterials] = useState([]);
     const [jobs, setJobs] = useState([]);
+    const [loadcounts, setLoadcount] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:3000/api/material')
@@ -21,8 +22,17 @@ function HaulFormContent({ formData, handleChange, handleSubmit }) {
                 setJobs(response.data);
             })
             .catch(error => {
-                console.error('Error fetching materials:', error);
+                console.error('Error fetching jobs:', error);
             });
+
+            axios.get('http://localhost:3000/api/loadcount')
+            .then(response => {
+                setLoadcount(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching loadcounts:', error);
+            });
+
     }, []);
 
     return (
@@ -43,13 +53,11 @@ function HaulFormContent({ formData, handleChange, handleSubmit }) {
                     <option key={index} value={item.ItemID}>{item.ItemID}</option>
                 ))}
             </select>
-                <input
-                    type="number"
-                    name="quantity"
-                    value={formData.quantity}
-                    onChange={handleChange}
-                    placeholder="Quantity (yds)"
-                />
+            <select name="loadcount" id="loadcount">
+                {loadcounts.map((item, index) => (
+                    <option key={index} value={item.yards}>{item.yards}</option>
+                ))}
+            </select>  
                 <button type="submit">Submit Delivery</button>
             </form>
         </div>
