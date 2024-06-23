@@ -2,7 +2,24 @@ import React, { useState, useEffect } from 'react';
 import '../styles/HaulFormContent.css'; // Import the CSS file
 import axios from 'axios';
 
-function HaulFormContent({ handleSubmit }) {
+// const [formData, setFormData] = useState({
+//     hauledFrom: '',
+//     hauledTo: '',
+//     material: '',
+//     quantity: ''
+// });
+
+// const [options, setOptions] = useState({
+//     hauledFromOptions: [],
+//     hauledToOptions: [],
+//     materialOptions: []
+// });
+
+
+
+
+
+function HaulFormContent() {
 
     const [materials, setMaterials] = useState([]);
     const [jobs, setJobs] = useState([]);
@@ -37,32 +54,62 @@ function HaulFormContent({ handleSubmit }) {
 
     return (
         <div className="form-container">
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}> */}
+            <form>
             <div className="form-field">
+
+
             <p className="form-label">Hauled From:</p>
+
+
             <select className="form-select" name="hauledFrom" id="hauledFrom">
                 {jobs.map((item, index) => (
                     <option key={index} value={item.JobNumber}>{item.JobName}</option>
                 ))}
             </select>
+
+
+
             <p className="form-label">Hauled To:</p>
+
+
             <select className="form-select" name="hauledTo" id="hauledTo">
                 {jobs.map((item, index) => (
                     <option key={index} value={item.JobNumber}>{item.JobName}</option>
                 ))}
             </select>
+
+
             <p className="form-label">Material:</p>
+
+
             <select className="form-select" name="material" id="material">
                 {materials.map((item, index) => (
-                    <option key={index} value={item.ItemID}>{item.Description}</option>
+                    <option key={index} value={item.ItemlisID}>{item.Description}</option>
                 ))}
             </select>
+
+            {/* <select name="material" value={formData.material} onChange={handleChange}>
+            {options.materialOptions.map(option => (
+            <option key={option.id} value={option.value}>
+            {option.label}
+            </option>
+            ))}
+            </select> */}
+
+
+
             <p className="form-label">Quantity:</p>
+
+
             <select className="form-select" name="loadcount" id="loadcount">
                 {loadcounts.map((item, index) => (
                     <option key={index} value={item.yards}>{item.yards}</option>
                 ))}
-            </select>  
+            </select>
+
+
+
                 <button type="submit" className="form-button">Submit Delivery</button>
 
 
