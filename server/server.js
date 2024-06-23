@@ -31,19 +31,9 @@ db.connect(err => {
     console.log('Connected to the MySQL server.');
 });
 
-app.post('/api/deliveries', (req, res) => {
-    const { hauledFrom, hauledTo, material, quantity } = req.body;
-    const sql = `INSERT INTO deliveries (hauledFrom, hauledTo, material, quantity) VALUES (?, ?, ?, ?)`;
-
-    db.query(sql, [hauledFrom, hauledTo, material, quantity], (error, results) => {
-        if (error) {
-            console.error('Failed to insert data into database:', error);
-            res.status(500).send('Failed to insert data into database');
-        } else {
-            res.status(201).send({ message: 'Data inserted successfully', id: results.insertId });
-        }
-    });
-});
+// Define Routes
+app.use('/api/deliveries', require('./routes/api/delivery'));
+app.use('/api/materials', require('./routes/api/material'));
 
 
 

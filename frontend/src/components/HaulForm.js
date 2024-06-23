@@ -1,9 +1,10 @@
 // src/components/HaulForm.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/HaulFormContent.css'; // Import the CSS file
-
 import HaulFormContent from './HaulFormContent';
 import axios from 'axios';
+
+
 
 const HaulForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -32,6 +33,10 @@ const HaulForm = ({ onSubmit }) => {
     }
 };
 
+
+
+
+
   return (
     <div>
     <HaulFormContent 
@@ -39,6 +44,8 @@ const HaulForm = ({ onSubmit }) => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
     />
+ 
+
     </div>
   );
 };

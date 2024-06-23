@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import HaulForm from './components/HaulForm';
 import ReviewLoads from './components/ReviewLoads';
 import './App.css'; // Import the CSS file
-import TestConnection from './components/TestConnection';
+// import TestConnection from './components/TestConnection';
 import Sev_Logo from './images/Sev_Logo.png'
+
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <img src={Sev_Logo} alt="Severino Logo" />  
       </header>
           <HaulForm onSubmit={handleHaulFormSubmit} />
+   
         </>
       ) : (
         <>
