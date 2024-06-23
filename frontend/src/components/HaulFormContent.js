@@ -54,7 +54,7 @@ function HaulFormContent({ handleSubmit }) {
             <p className="form-label">Material:</p>
             <select className="form-select" name="material" id="material">
                 {materials.map((item, index) => (
-                    <option key={index} value={item.ItemID}>{item.ItemID}</option>
+                    <option key={index} value={item.ItemID}>{item.Description}</option>
                 ))}
             </select>
             <p className="form-label">Quantity:</p>
