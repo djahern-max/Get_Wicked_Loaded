@@ -1,12 +1,10 @@
 // src/App.js
-import React, { useState } from 'react';
-import HaulForm from './components/HaulForm';
-import ReviewLoads from './components/ReviewLoads';
-import './App.css'; // Import the CSS file
-import TestConnection from './components/TestConnection';
-import Sev_Logo from './images/Sev_Logo.png'
-
-
+import React, { useState } from "react";
+import HaulForm from "./components/HaulForm";
+import ReviewLoads from "./components/ReviewLoads";
+import "./App.css"; // Import the CSS file
+import TestConnection from "./components/TestConnection";
+import Sev_Logo from "./images/Sev_Logo.png";
 
 function App() {
   const [showSuperForm, setShowSuperForm] = useState(false);
@@ -16,12 +14,12 @@ function App() {
   };
 
   const handleReviewDeliveries = () => {
-    console.log('Review Deliveries clicked');
+    console.log("Review Deliveries clicked");
     // Implement further logic here
   };
 
   const handleSubmitToOffice = () => {
-    console.log('Submit to Office clicked');
+    console.log("Submit to Office clicked");
     // Implement further logic here
   };
 
@@ -29,11 +27,10 @@ function App() {
     <div className="App">
       {!showSuperForm ? (
         <>
-      <header className="App-header">
-        <img src={Sev_Logo} alt="Severino Logo" />  
-      </header>
+          <header className="App-header">
+            <img src={Sev_Logo} alt="Severino Logo" />
+          </header>
           <HaulForm onSubmit={handleHaulFormSubmit} />
-   
         </>
       ) : (
         <>
@@ -45,17 +42,12 @@ function App() {
         </>
       )}
 
-          <div>
-            <h1>Testing Backend Connection</h1>
-            <TestConnection />
-        </div>
+      <div>
+        <h1>Backend Connection</h1>
+        <TestConnection />
+      </div>
     </div>
   );
 }
 
 export default App;
-
-
-
-
-
