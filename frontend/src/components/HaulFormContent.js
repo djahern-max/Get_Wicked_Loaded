@@ -111,8 +111,8 @@ function HaulFormContent({ handleSubmit, formData, handleChange }) {
             <option value="">Select an option</option>
             {loadcounts.length > 0 ? (
               loadcounts.map((item, index) => (
-                <option key={index} value={item.description}>
-                  {item.description}
+                <option key={index} value={item.quantity}>
+                  {item.quantity}
                 </option>
               ))
             ) : (
