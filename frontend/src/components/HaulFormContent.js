@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../styles/HaulFormContent.css"; // Import the CSS file
 import axios from "axios";
+import Sev_Logo from "../../src/images/Sev_Logo.png";
 
 function HaulFormContent({ handleSubmit, formData, handleChange }) {
   const [materials, setMaterials] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [loadcounts, setLoadcount] = useState([]);
+  const [phasecodes, setPhasecode] = useState([]);
 
   useEffect(() => {
     axios
@@ -37,11 +39,22 @@ function HaulFormContent({ handleSubmit, formData, handleChange }) {
       .catch((error) => {
         console.error("Error fetching loadcounts:", error);
       });
+
+    axios
+      .get("http://localhost:3000/api/phasecode")
+      .then((response) => {
+        console.log("Loadcounts data:", response.data); // Debugging line
+        setPhasecode(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching loadcounts:", error);
+      });
   }, []);
 
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
+        <img src={Sev_Logo} alt="Severino Logo" />
         <div className="form-field">
           <p className="form-label">Hauled From:</p>
           <select
@@ -51,7 +64,7 @@ function HaulFormContent({ handleSubmit, formData, handleChange }) {
             value={formData.hauledFrom}
             onChange={handleChange}
           >
-            <option value="">Select an option</option>
+            <option value="">Where did you pick up?</option>
             {jobs.length > 0 ? (
               jobs.map((item, index) => (
                 <option key={index} value={item.job_number}>
@@ -70,7 +83,7 @@ function HaulFormContent({ handleSubmit, formData, handleChange }) {
             value={formData.hauledTo}
             onChange={handleChange}
           >
-            <option value="">Select an option</option>
+            <option value="">Where did you deliver?</option>
             {jobs.length > 0 ? (
               jobs.map((item, index) => (
                 <option key={index} value={item.job_number}>
@@ -89,7 +102,7 @@ function HaulFormContent({ handleSubmit, formData, handleChange }) {
             value={formData.material}
             onChange={handleChange}
           >
-            <option value="">Select an option</option>
+            <option value="">What type of material?</option>
             {materials.length > 0 ? (
               materials.map((item, index) => (
                 <option key={index} value={item.item_code}>
@@ -100,6 +113,7 @@ function HaulFormContent({ handleSubmit, formData, handleChange }) {
               <option>Loading...</option>
             )}
           </select>
+
           <p className="form-label">Quantity:</p>
           <select
             className="form-select"
@@ -108,7 +122,7 @@ function HaulFormContent({ handleSubmit, formData, handleChange }) {
             value={formData.quantity}
             onChange={handleChange}
           >
-            <option value="">Select an option</option>
+            <option value="">How much?</option>
             {loadcounts.length > 0 ? (
               loadcounts.map((item, index) => (
                 <option key={index} value={item.quantity}>
@@ -119,6 +133,27 @@ function HaulFormContent({ handleSubmit, formData, handleChange }) {
               <option>Loading...</option>
             )}
           </select>
+
+          <p className="form-label">Phasecode:</p>
+          <select
+            className="form-select"
+            name="phasecode "
+            id="phasecode"
+            value={formData.phasecodes}
+            onChange={handleChange}
+          >
+            <option value="">Which Phase Code?</option>
+            {phasecodes.length > 0 ? (
+              phasecodes.map((item, index) => (
+                <option key={index} value={item.description}>
+                  {item.phaseCode}
+                </option>
+              ))
+            ) : (
+              <option>Loading...</option>
+            )}
+          </select>
+
           <button type="submit" className="form-button">
             Submit Delivery
           </button>

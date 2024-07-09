@@ -1,8 +1,8 @@
 /* Container surrounding the form */
 .form-container {
-  max-width: 500px; /* Maximum width of the form */
-  margin: 0px auto; /* Centering the form in the middle of the page */
-  padding: 21px; /* Reduced padding */
+  max-width: 600px; /* Increased maximum width of the form */
+  margin: 0 auto; /* Centering the form in the middle of the page */
+  padding: 20px; /* Adjusted padding */
   background: rgb(219, 218, 218); /* Light grey background */
   border-radius: 10px; /* Slightly larger rounded corners for a softer look */
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* More pronounced shadow for depth */
@@ -12,6 +12,9 @@
 /* Each form field (paragraph + select) */
 .form-field {
   margin-bottom: 15px; /* Slightly reduced space between form fields */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
 }
 
 /* Paragraph tags used as labels */
@@ -21,8 +24,6 @@
   margin-bottom: 5px; /* Reduced space between label and select box */
   font-weight: 900; /* Medium font weight for emphasis */
   text-align: center;
- 
-
 }
 
 /* Style for the select elements */
@@ -37,8 +38,11 @@
   -webkit-appearance: none; /* Removing default styles for consistency */
   -moz-appearance: none; /* Removing default styles for consistency */
   appearance: none; /* Removing default styles for consistency */
-  background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ecf0f1, #ecf0f1); /* Custom arrow with gradient */
-  background-position: calc(100% - 15px) center, calc(100% - 10px) center, 100% 0;
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ecf0f1, #ecf0f1); /* Custom arrow with gradient */
+  background-position: calc(100% - 15px) center, calc(100% - 10px) center,
+    100% 0;
   background-size: 5px 5px, 5px 5px, 2.5px 100%;
   background-repeat: no-repeat;
   transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for interactive elements */
@@ -47,7 +51,7 @@
 /* Hover effects for select elements */
 .form-select:hover {
   border-color: #bdc3c7; /* Lighter grey on hover */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth on hover */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth on hover */
 }
 
 /* Focus effects for select elements */
@@ -70,12 +74,18 @@
   transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions for interactive effects */
   outline: none; /* Removes outline to maintain style on focus */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
-  margin: 28px 0 10px; /* Increased top margin to create space above the button */
+  margin: 28px auto 10px; /* Adjust margin to center the button */
+  display: block; /* Ensure the button takes up the full width available */
 }
 
 /* Hover State */
 .form-button:hover {
-  background-color: rgba(23, 25, 27, 0.2); /* A slightly darker shade of green on hover */
+  background-color: rgba(
+    23,
+    25,
+    27,
+    0.2
+  ); /* A slightly darker shade of green on hover */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow for a "lifted" effect */
 }
 
@@ -86,26 +96,52 @@
 
 /* Active State */
 .form-button:active {
-  background-color: rgb(61, 109, 75); /* Even darker green for an active (pressed) state */
+  background-color: rgb(
+    61,
+    109,
+    75
+  ); /* Even darker green for an active (pressed) state */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Lower shadow to simulate the button being pressed */
 }
 
-
-
-
-
-
-@media (max-width: 480px) {
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
   .form-container {
-      padding: 20px;
-      margin: 20px;
+    max-width: 95%; /* Ensure the form container takes almost full width but not too wide */
+    padding: 20px; /* Adjust padding for smaller screens */
+    margin: 10px auto; /* Adjust margin for smaller screens */
   }
 
-  .form-container input,
-  .form-container button {
-      padding: 12px 10px;
+  .form-label {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .form-select,
+  .form-button,
+  input[type="text"] {
+    padding: 10px; /* Adjust padding for smaller screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
   }
 }
 
+@media (max-width: 480px) {
+  .form-container {
+    padding: 15px;
+    margin: 10px;
+  }
 
+  .form-label {
+    font-size: 14px; /* Further adjust font size for very small screens */
+  }
 
+  .form-select,
+  .form-button,
+  input[type="text"] {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .form-button {
+    padding: 12px 25px; /* Adjust button padding */
+  }
+}

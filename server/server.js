@@ -159,6 +159,34 @@ app.post("/api/loadcount", (req, res) => {
   });
 });
 
+app.post("/api/phasecode", (req, res) => {
+  const { phaseCode, description } = req.body;
+  const sql = `INSERT INTO phase (phaseCode, description) VALUES (?, ?)`;
+
+  db.query(sql, [ItemID, Description], (error, results) => {
+    if (error) {
+      console.error("Failed to insert data into database:", error);
+      res.status(500).send("Failed to insert data into database");
+    } else {
+      res
+        .status(201)
+        .send({ message: "Data inserted successfully", id: results.insertId });
+    }
+  });
+});
+
+app.get("/api/phasecode", (req, res) => {
+  const sql = "SELECT * FROM phasecode";
+  db.query(sql, (error, results) => {
+    if (error) {
+      console.error("Error fetching deliveries: ", error);
+      res.status(500).send("Failed to fetch deliveries");
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });

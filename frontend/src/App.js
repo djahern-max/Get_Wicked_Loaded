@@ -4,7 +4,6 @@ import HaulForm from "./components/HaulForm";
 import ReviewLoads from "./components/ReviewLoads";
 import "./App.css"; // Import the CSS file
 import TestConnection from "./components/TestConnection";
-import Sev_Logo from "./images/Sev_Logo.png";
 
 function App() {
   const [showSuperForm, setShowSuperForm] = useState(false);
@@ -27,9 +26,7 @@ function App() {
     <div className="App">
       {!showSuperForm ? (
         <>
-          <header className="App-header">
-            <img src={Sev_Logo} alt="Severino Logo" />
-          </header>
+          <header className="App-header"></header>
           <HaulForm onSubmit={handleHaulFormSubmit} />
         </>
       ) : (
@@ -42,10 +39,10 @@ function App() {
         </>
       )}
 
-      <div>
+      {/* <div>
         <h1>Backend Connection</h1>
         <TestConnection />
-      </div>
+      </div> */}
     </div>
   );
 }
